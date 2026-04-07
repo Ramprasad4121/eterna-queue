@@ -1,7 +1,7 @@
-/// @title MPMC Queue Throughput Benchmarks
-/// @author E Ram Prasad
-/// @notice This benchmark suite measures the operations-per-second (throughput) of the bounded MPMC queue.
-/// @dev Utilizes the `criterion` crate to test symmetric thread configurations (from 1x1 up to 16x16) across varying capacities, as well as an asymmetric backpressure workload (8 producers, 2 consumers).
+//! @title MPMC Queue Throughput Benchmarks
+//! @author E Ram Prasad
+//! @notice This benchmark suite measures the operations-per-second (throughput) of the bounded MPMC queue.
+//! @dev Utilizes the `criterion` crate to test symmetric thread configurations (from 1x1 up to 16x16) across varying capacities, as well as an asymmetric backpressure workload (8 producers, 2 consumers).
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use eterna_queue::{queue::MpmcQueue, BoundedQueue};
 use std::sync::Arc;

@@ -1,9 +1,9 @@
-pub mod queue;
+//! @title Bounded MPMC Queue Trait
+//! @author E Ram Prasad
+//! @notice Defines the standard interface for a bounded Multi-Producer Multi-Consumer queue.
+//! @dev Any implementation of this trait must be thread-safe (`Send + Sync`) and correctly handle concurrent pushes and pops respecting the specified maximum capacity.
 
-/// @title Bounded MPMC Queue Trait
-/// @author E Ram Prasad
-/// @notice Defines the standard interface for a bounded Multi-Producer Multi-Consumer queue.
-/// @dev Any implementation of this trait must be thread-safe (`Send + Sync`) and correctly handle concurrent pushes and pops respecting the specified maximum capacity.
+pub mod queue;
 pub trait BoundedQueue<T: Send>: Send + Sync {
     /// @notice Initializes a new bounded queue with the specified capacity.
     /// @dev Implementations should enforce that the capacity is greater than 0.

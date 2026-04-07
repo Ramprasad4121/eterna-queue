@@ -1,11 +1,12 @@
+//! @title A bounded, Multi-Producer Multi-Consumer (MPMC) queue.
+//! @author: E Ram Prasad
+//! @notice This structure provides a thread-safe queue with a fixed maximum capacity.
+//! @dev This implementation prioritizes memory safety and correctness over lock-free operations. It utilizes a `Mutex` to protect the underlying `VecDeque` and `Condvar`s to handle synchronization without CPU-intensive busy-waiting.
+
 use crate::BoundedQueue;
 use std::collections::VecDeque;
 use std::sync::{Condvar, Mutex};
 
-/// @title A bounded, Multi-Producer Multi-Consumer (MPMC) queue.
-/// @author: E Ram Prasad
-/// @notice This structure provides a thread-safe queue with a fixed maximum capacity.
-/// @dev This implementation prioritizes memory safety and correctness over lock-free operations. It utilizes a `Mutex` to protect the underlying `VecDeque` and `Condvar`s to handle synchronization without CPU-intensive busy-waiting.
 pub struct MpmcQueue<T> {
     inner: Mutex<Inner<T>>,
     not_full: Condvar,
